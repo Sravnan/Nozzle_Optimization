@@ -5,6 +5,10 @@
 
 classdef Constants
     properties(Constant=true)
+        %% Environment Variables
+        Patm =1.015e5; 
+        
+        %% Engine Variables
         Pcc=6e6;                                                  % Chamber pressure [Pa]
         Tcc=3500;                                                 % Chamber temperature [K]
         Mmass=13.4;                                               % Mollecular mass combustion products [g/mol]
