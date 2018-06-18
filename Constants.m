@@ -12,5 +12,6 @@ classdef Constants
         Rgass=8.3144598;                                          % Universal gass constant [J/(K*mol)]
         Rspess=Constants.Rgass*1000/Constants.Mmass;              % Spesific gass constant [J/(K*kg)]
         Cp=Constants.Rspess*(Constants.gamma/(Constants.gamma-1)) % Spesific heat constant pressure [J/(K*kg)]
+        VH=0.648336914899513;                                     % Vandenkerckhove constant [-] Big Gamma
     end
 end
