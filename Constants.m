@@ -1,6 +1,7 @@
 %% Constant parameters
 % That are used in most of the programs to compute aspects that 
-% the optimization needs.
+% the optimization needs. 
+%% Class creation
 
 classdef Constants
     properties(Constant=true)
