@@ -6,8 +6,8 @@
 classdef Constants
     properties(Constant=true)
         %% Environment Variables
-        Patm =1.015e5; 
-        
+        Patm =1.015e5;                                            % Atmospheric Pressure at sea lavel [Pa]
+        g = 9.8065;                                               % Earth acceleration [m/s^2]
         %% Engine Variables
         Pcc=6e6;                                                  % Chamber pressure [Pa]
         Tcc=3500;                                                 % Chamber temperature [K]
