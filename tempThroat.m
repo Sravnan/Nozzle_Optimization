@@ -1,4 +1,4 @@
-function [ Tin, Tout] = tempThroat(designVec)
+function [ Twin, Twout] = tempThroat(designVec)
 %tempThroat Calculate temperature in the nozzle throat
 
 %Calculate heat flow coefficients
@@ -19,10 +19,10 @@ mdot = Constants.VH*Constants.Pcc*pi*designVec(3)^2/sqrt(Constants.Rspess*Consta
 hin =1.213*0.026*mdot^0.8*Constants.mu^0.8*Constants.Cp*Pr^(-0.6)*(2*designVec(3))^(-1.8);  % Coefficient of convection to the inside of the nozzle
 
 % Solve system of equations
-syms Tsout Tsin % Symbolic Temperatures
-eq1 = hin  * (2*Tr/(Tr + Tsin))*(Tr - Tsin) - k/Constants.tnoz *(Tsin - Tsout) ==0 ;
-eq2 = -hout* (Tsout - Tcool) - sigma * (Tsout^4-Tamb^4)+ k/Constants.tnoz *(Tsin - Tsout) ==0;
-[Tin,Tout]= vpasolve([eq1,eq2],[Tin, Tout],[600 1300; 600 1300]);
-T
+syms Tout Tin
+eq1 = hin  * (2*Tr/(Tr + Tin))*(Tr - Tin) - k/Constants.tnoz *(Tin - Tout) ==0 ;
+eq2 = -hout* (Tout - Tcool) - sigma * (Tout^4-Tamb^4)+ k/Constants.tnoz *(Tin - Tout) ==0;
+[Twin,Twout]= vpasolve([eq1,eq2],[Tin, Tout],[600 1300; 600 1300]);
+
 end
 
