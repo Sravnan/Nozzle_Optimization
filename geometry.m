@@ -1,4 +1,4 @@
-function [x,y,Aratio,xe] = geometry(designVec)
+function [x,y,Aratio,xe,V] = geometry(designVec)
 %geometry is a function that coputes the x and y coordinates of the bell
 %nozzle
 % Inputs:
@@ -46,6 +46,9 @@ x(length(xi)+1)=xe;
 %% Calculating area ratio from the points
 Athroat=pi*designVec(3)^2;
 Aratio=(y.^2.*pi)./Athroat;
+
+%% Calculating Volume
+V = sum(pi*(y(1:end-1)+design(5))^2-y(1:end-1)^2)*dx+pi*((y(end)+design(5))^2-y(end)^2)*(xe-x(end-1));
 
 
 
