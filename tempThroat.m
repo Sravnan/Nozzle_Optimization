@@ -1,4 +1,4 @@
-function [ Twin, Twout] = tempThroat(design)
+function [ Twin, Twout] = tempThroat(designVec)
 %tempThroat Calculate temperature in the nozzle throat
 
 %Calculate heat flow coefficients
@@ -14,9 +14,9 @@ Tamb = Constants.Tamb; % Ambient temperature
 %Solve for Temperatures
 To = 2/(Constants.gamma+1)*Constants.Tcc;
 Tr = To*(1+r*(Constants.gamma-1)/2);
-mdot = Constants.VH*Constants.Pcc*pi*design(3)^2/sqrt(Constants.Rspess*Constants.Tcc);
+mdot = Constants.VH*Constants.Pcc*pi*designVec(3)^2/sqrt(Constants.Rspess*Constants.Tcc);
 
-hin =1.213*0.026*mdot^0.8*Constants.mu^0.8*Constants.Cp*Pr^(-0.6)*design(3)^(-1.8);  % Coefficient of convection to the inside of the nozzle
+hin =1.213*0.026*mdot^0.8*Constants.mu^0.8*Constants.Cp*Pr^(-0.6)*(2*designVec(3))^(-1.8);  % Coefficient of convection to the inside of the nozzle
 
 % Solve system of equations
 syms Tout Tin
