@@ -20,8 +20,8 @@ hin =1.213*0.026*mdot^0.8*Constants.mu^0.2*Constants.Cp*Pr^(-2/3)*(2*designVec(3
 
 % Solve system of equations
 syms Tsin Tsout
-eq1 = hin  * (2*Tr/(Tr + Tsin))^(2/3)*(Tr - Tsin) - k/Constants.tnoz *(Tsin - Tsout) ==0 ;
-eq2 = -hout* (Tsout - Tcool) - sigma * (Tsout^4-Tamb^4)+ k/Constants.tnoz *(Tsin - Tsout) ==0;
+eq1 = hin  * (2*Tr/(Tr + Tsin))^(2/3)*(Tr - Tsin) - k/designVec(5) *(Tsin - Tsout) ==0 ;
+eq2 = -hout* (Tsout - Tcool) - sigma * (Tsout^4-Tamb^4)+ k/designVec(5) *(Tsin - Tsout) ==0;
 [Tin,Tout]= vpasolve([eq1,eq2],[Tsin, Tsout]);
 
 end
