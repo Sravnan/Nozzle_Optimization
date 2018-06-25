@@ -17,7 +17,7 @@ classdef Constants
         Rspess=Constants.Rgass*1000/Constants.Mmass;              % Spesific gass constant [J/(K*kg)]
         Cp=Constants.Rspess*(Constants.gamma/(Constants.gamma-1)) % Spesific heat constant pressure [J/(K*kg)]
         VH=0.648336914899513;                                     % Vandenkerckhove constant [-] Big Gamma
-        %% Material Propperties [yeld stress(Pa), desnity(g/cc)]
-        tit=[880e6 4.43];
+        %% Material Propperties [yeld stress(Pa), desnity(g/cc), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1000 C
+        TZM=[650e6 10.2 110 0.14];
     end
 end
