@@ -22,7 +22,7 @@ classdef Constants
         mu= 4.14e-5;                                              % Dynamic Viscosity [Pa s]
         Tcool = 100;                                              % Temperature of Coolant at Throat [K]
         hcool = 50000;                                             % Coefficient of Convection for Coolant [W/m^2/K]
-        %% Material Propperties [yield stress(Pa), desnity(g/cc), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1000 C
-        TZM=[650e6 10.2 110 0.14];
+        %% Material Propperties [yield stress(Pa), desnity(g/cc), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1500 C
+        TZM=[100e6 10.2 95 0.16];
     end
 end
