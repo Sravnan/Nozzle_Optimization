@@ -18,7 +18,8 @@ classdef Constants
         Cp=Constants.Rspess*(Constants.gamma/(Constants.gamma-1)) % Spesific heat constant pressure [J/(K*kg)]
         VH=0.648336914899513;                                     % Vandenkerckhove constant [-] Big Gamma
         tnoz=0.005                                                % Thickness 
-        
+        mu= 4.14e-5                                               % Dynamic Viscosity [Pa s]
+
         %% Material Propperties [yield stress(Pa), desnity(g/cc), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1000 C
         TZM=[650e6 10.2 110 0.14];
     end
