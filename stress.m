@@ -9,7 +9,7 @@ function [ stress] = stress( designVec,t )
 %   stress       [Pa] 
 
 %% Stress calculation
-sf=1.2; %safety factor
+sf=1.5; %safety factor
 maxStress=Constants.TZM(1)/sf; %Max stress of titanium
 [x,y,Aratio]=geometry(designVec);
 tol=0.01;

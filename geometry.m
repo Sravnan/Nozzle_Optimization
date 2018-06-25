@@ -48,7 +48,7 @@ Athroat=pi*designVec(3)^2;
 Aratio=(y.^2.*pi)./Athroat;
 
 %% Calculating Volume
-V = sum(pi*(y(1:end-1)+design(5))^2-y(1:end-1)^2)*dx+pi*((y(end)+design(5))^2-y(end)^2)*(xe-x(end-1));
+V = sum(pi.*(y(1:end-1)+designVec(5)).^2-y(1:end-1).^2).*dx+pi.*((y(end)+designVec(5)).^2-y(end).^2).*(xe-x(end-1));
 
 
 
