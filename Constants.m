@@ -9,7 +9,7 @@ classdef Constants
         Patm =1.015e5;                                            % Atmospheric Pressure at sea lavel [Pa]
         g = 9.8065;                                               % Earth acceleration [m/s^2]
         %% Engine Variables
-        Pcc=20e6;                                                 % Chamber pressure [Pa]
+        Pcc=6e6;                                                 % Chamber pressure [Pa]
         Tcc=3500;                                                 % Chamber temperature [K]
         Mmass=13.4;                                               % Mollecular mass combustion products [g/mol]
         gamma=1.199;                                              % Spesific heat ratio [-]

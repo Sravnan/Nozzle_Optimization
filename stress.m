@@ -1,5 +1,5 @@
 function [ stress] = stress( designVec,t )
-%Stress calculator for each cross section 
+%Stress Stress calculator for each cross section 
 %   Detailed explanation goes here
 % Inputs:
 %   designVec
@@ -10,7 +10,7 @@ function [ stress] = stress( designVec,t )
 
 %% Stress calculation
 sf=1.2; %safety factor
-maxStress=Constants.tit(1)/sf; %Max stress of titanium
+maxStress=Constants.TZM(1)/sf; %Max stress of titanium
 [x,y,Aratio]=geometry(designVec);
 tol=0.01;
 pepc0=0;
