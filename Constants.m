@@ -6,6 +6,7 @@
 classdef Constants
     properties(Constant=true)
         %% Environment Variables
+        Tamb = 290                                                % Ambient Temperature [K]
         Patm =1.015e5;                                            % Atmospheric Pressure at sea lavel [Pa]
         g = 9.8065;                                               % Earth acceleration [m/s^2]
         %% Engine Variables
@@ -17,9 +18,10 @@ classdef Constants
         Rspess=Constants.Rgass*1000/Constants.Mmass;              % Spesific gass constant [J/(K*kg)]
         Cp=Constants.Rspess*(Constants.gamma/(Constants.gamma-1)) % Spesific heat constant pressure [J/(K*kg)]
         VH=0.648336914899513;                                     % Vandenkerckhove constant [-] Big Gamma
-        tnoz=0.005                                                % Thickness 
-        mu= 4.14e-5                                               % Dynamic Viscosity [Pa s]
-
+        tnoz=0.005;                                               % Thickness 
+        mu= 4.14e-5;                                              % Dynamic Viscosity [Pa s]
+        Tcool = 100;                                              % Temperature of Coolant at Throat [K]
+        hcool = 1000;                                             % Coefficient of Convection for Coolant [W/m^2/K]
         %% Material Propperties [yield stress(Pa), desnity(g/cc), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1000 C
         TZM=[650e6 10.2 110 0.14];
     end
