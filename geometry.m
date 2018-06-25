@@ -1,7 +1,13 @@
-function [x,y,Aratio] = geometry(designVec)
+function [x,y,Aratio,xe] = geometry(designVec)
 %geometry is a function that coputes the x and y coordinates of the bell
 %nozzle
-%   Detailed explanation goes here
+% Inputs:
+%   designVec
+% Oututs:
+%   x coordinate (m)
+%   y coordinate (m)
+%   Aratio area ratio (-)
+%   xe exit lenght (m)
 
 %% Setting up formulas
 % Length at start bell curve

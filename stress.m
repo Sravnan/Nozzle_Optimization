@@ -1,4 +1,4 @@
-function [ t,stress,maxStress,x,y,Aratio,Pressure] = stress( designVec )
+function [ stress] = stress( designVec,t )
 %Stress calculator for each cross section 
 %   Detailed explanation goes here
 % Inputs:
@@ -18,7 +18,6 @@ Pressure=[];
 for ii=1:length(Aratio)
    Pressure(ii)=pressureRatioCalc( Aratio(ii),pepc0,tol )*Constants.Pcc; 
 end
-t=Pressure.*2.*y./(2.*maxStress);
 stress=Pressure.*2.*y.^2./(2.*t);
 
 end
