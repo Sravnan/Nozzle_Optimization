@@ -1,4 +1,4 @@
-function [x,y] = geometry(designVec)
+function [x,y,Aratio] = geometry(designVec)
 %geometry is a function that coputes the x and y coordinates of the bell
 %nozzle
 %   Detailed explanation goes here
@@ -9,7 +9,7 @@ xp=0.382*designVec(3)*sin(designVec(1));
 % Radius at start bell curve
 yp=designVec(3)+(1-cos(designVec(1)))*0.382*designVec(3);
 % Exit radius
-ye=sqrt(designVec(4)*designVec(3));
+ye=sqrt(designVec(4))*designVec(3);
 % Constants for the calculation of the contour
 a=(tan(pi/2-designVec(2))-tan(pi/2-designVec(1)))/(2*(ye-yp));
 b=tan(pi/2-designVec(1))-(tan(pi/2-designVec(2))-tan(pi/2-designVec(1)))...
@@ -34,12 +34,19 @@ else
     %y(ii)=0.4;
 end
 end
+y(length(xi)+1)=ye;
 x=xi;
-
-
-
+x(length(xi)+1)=xe;
+%% Calculating area ratio from the points
+Athroat=pi*designVec(3)^2;
+Aratio=(y.^2.*pi)./Athroat;
 
 
 
 end
+
+
+
+
+
 

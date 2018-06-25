@@ -9,7 +9,7 @@ classdef Constants
         Patm =1.015e5;                                            % Atmospheric Pressure at sea lavel [Pa]
         g = 9.8065;                                               % Earth acceleration [m/s^2]
         %% Engine Variables
-        Pcc=6e6;                                                  % Chamber pressure [Pa]
+        Pcc=20e6;                                                  % Chamber pressure [Pa]
         Tcc=3500;                                                 % Chamber temperature [K]
         Mmass=13.4;                                               % Mollecular mass combustion products [g/mol]
         gamma=1.199;                                              % Spesific heat ratio [-]
@@ -17,5 +17,7 @@ classdef Constants
         Rspess=Constants.Rgass*1000/Constants.Mmass;              % Spesific gass constant [J/(K*kg)]
         Cp=Constants.Rspess*(Constants.gamma/(Constants.gamma-1)) % Spesific heat constant pressure [J/(K*kg)]
         VH=0.648336914899513;                                     % Vandenkerckhove constant [-] Big Gamma
+        %% Material Propperties [yeld stress(Pa), desnity(g/cc)]
+        tit=[880e6 4.43];
     end
 end
