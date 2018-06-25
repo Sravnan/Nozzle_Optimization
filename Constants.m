@@ -6,7 +6,7 @@
 classdef Constants
     properties(Constant=true)
         %% Environment Variables
-        Tamb = 290                                                % Ambient Temperature [K]
+        Tamb = 290;                                                % Ambient Temperature [K]
         Patm =1.015e5;                                            % Atmospheric Pressure at sea lavel [Pa]
         g = 9.8065;                                               % Earth acceleration [m/s^2]
         %% Engine Variables

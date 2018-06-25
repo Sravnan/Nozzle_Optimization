@@ -1,4 +1,4 @@
-function [ Twin, Twout] = tempThroat(designVec)
+function [ Tin, Tout] = tempThroat(designVec)
 %tempThroat Calculate temperature in the nozzle throat
 
 %Calculate heat flow coefficients
@@ -16,13 +16,13 @@ To = 2/(Constants.gamma+1)*Constants.Tcc;
 Tr = To*(1+r*(Constants.gamma-1)/2);
 mdot = Constants.VH*Constants.Pcc*pi*designVec(3)^2/sqrt(Constants.Rspess*Constants.Tcc);
 
-hin =1.213*0.026*mdot^0.8*Constants.mu^0.8*Constants.Cp*Pr^(-0.6)*(2*designVec(3))^(-1.8);  % Coefficient of convection to the inside of the nozzle
+hin =1.213*0.026*mdot^0.8*Constants.mu^0.2*Constants.Cp*Pr^(-0.6)*(2*designVec(3))^(-1.8);  % Coefficient of convection to the inside of the nozzle
 
 % Solve system of equations
-syms Tout Tin
-eq1 = hin  * (2*Tr/(Tr + Tin))*(Tr - Tin) - k/Constants.tnoz *(Tin - Tout) ==0 ;
-eq2 = -hout* (Tout - Tcool) - sigma * (Tout^4-Tamb^4)+ k/Constants.tnoz *(Tin - Tout) ==0;
-[Twin,Twout]= vpasolve([eq1,eq2],[Tin, Tout],[600 1300; 600 1300]);
+syms Tsin Tsout
+eq1 = hin  * (2*Tr/(Tr + Tsin))^(2/3)*(Tr - Tsin) - k/Constants.tnoz *(Tsin - Tsout) ==0 ;
+eq2 = -hout* (Tsout - Tcool) - sigma * (Tsout^4-Tamb^4)+ k/Constants.tnoz *(Tsin - Tsout) ==0;
+[Tin,Tout]= vpasolve([eq1,eq2],[Tsin, Tsout]);
 
 end
 
