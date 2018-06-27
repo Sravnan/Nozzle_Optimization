@@ -28,5 +28,8 @@ classdef Constants
         t = 0.002;                                                % Default nozzle wall thickness [m]
         theta1 = 30*pi/180;                                       % Default nozzle divergence half angle [rad]
         theta2 = 4*pi/180;                                        % Default nozzle exit half angle [rad]  
+        %% Nozzle convergent section
+        beta = 30*pi/180;
+        xconv = 0.3;
     end
 end

@@ -20,6 +20,7 @@ ISP=isp(designVec);
 Stress=max(stress(designVec,Constants.tnoz));
 temp=tempThroat(designVec);
 mass=V*Constants.TZM(3);
+minPresRatio = chokedflow(designVec);
 
 % Normalizing
 constraints(1)=xe/maxLength-1;      % Max length constrait
@@ -27,7 +28,7 @@ constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
-
+constraints(6)= minPresRatio/(Constants.Pcc/Constants.Patm)-1;
 
 
 
