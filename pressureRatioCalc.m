@@ -16,6 +16,6 @@ while difference>tol
     difference = abs(pepcnew-pepc);
     pepc = pepcnew;
 end
-
+pepc = real(pepc);
 end
 
