@@ -21,8 +21,12 @@ classdef Constants
         tnoz=0.005;                                               % Thickness 
         mu= 4.14e-5;                                              % Dynamic Viscosity [Pa s]
         Tcool = 100;                                              % Temperature of Coolant at Throat [K]
-        hcool = 50000;                                             % Coefficient of Convection for Coolant [W/m^2/K]
+        hcool = 50000;                                            % Coefficient of Convection for Coolant [W/m^2/K]
         %% Material Propperties [yield stress(Pa), desnity(kg/m^3), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1500 C
         TZM=[100e6 10.2*1000 95 0.16];
+        %% Simplified Problem design defaults
+        t = 0.002;                                                % Default nozzle wall thickness [m]
+        theta1 = 30*pi/180;                                       % Default nozzle divergence half angle [rad]
+        theta2 = 4*pi/180;                                        % Default nozzle exit half angle [rad]  
     end
 end

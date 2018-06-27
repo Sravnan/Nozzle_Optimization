@@ -9,16 +9,32 @@ function [x,y,Aratio,xe,V] = geometry(designVec)
 %   Aratio area ratio (-)
 %   xe exit lenght (m)
 
+%% Check if simplified problem
+if length(designVec)==2
+    rt = designVec(1);
+    eps = designVec(2);
+    t = Constants.t;
+    theta1 = Constants.theta1;
+    theta2 = Constants.theta2 ;
+else
+    rt = designVec(1);
+    eps = designVec(2);
+    t = designVec(3);
+    theta1 =designVec(4);
+    theta2 = designVec(5);
+end
+
+
 %% Setting up formulas
 % Length at start bell curve
-xp=0.382*designVec(3)*sin(designVec(1));
+xp=0.382*rt*sin(theta1);
 % Radius at start bell curve
-yp=designVec(3)+(1-cos(designVec(1)))*0.382*designVec(3);
+yp=rt+(1-cos(theta1))*0.382*rt;
 % Exit radius
-ye=sqrt(designVec(4))*designVec(3);
+ye=sqrt(eps)*rt;
 % Constants for the calculation of the contour
-a=(tan(pi/2-designVec(2))-tan(pi/2-designVec(1)))/(2*(ye-yp));
-b=tan(pi/2-designVec(1))-(tan(pi/2-designVec(2))-tan(pi/2-designVec(1)))...
+a=(tan(pi/2-theta2)-tan(pi/2-theta1))/(2*(ye-yp));
+b=tan(pi/2-theta1)-(tan(pi/2-theta2)-tan(pi/2-theta1))...
     /(2*(ye-yp))*yp;
 c=xp-a*yp^2-b*yp;
 % Length at nozzle exit
@@ -32,8 +48,8 @@ y=[];
 ii=1:length(xi);
 for ii=ii
 if xi(ii)<xp
-    theta=asin(xi(ii)/(0.382*designVec(3)));
-    y(ii)=designVec(3)-(cos(theta)*0.382*designVec(3)-0.382*designVec(3));
+    theta=asin(xi(ii)/(0.382*rt));
+    y(ii)=rt-(cos(theta)*0.382*rt-0.382*rt);
     
 else
     y(ii)=(-b+sqrt(b^2-4*a*(c-xi(ii))))/(2*a);
@@ -44,11 +60,11 @@ y(length(xi)+1)=ye;
 x=xi;
 x(length(xi)+1)=xe;
 %% Calculating area ratio from the points
-Athroat=pi*designVec(3)^2;
+Athroat=pi*rt^2;
 Aratio=(y.^2.*pi)./Athroat;
 
 %% Calculating Volume
-V = sum(pi.*(y(1:end-1)+designVec(5)).^2-y(1:end-1).^2).*dx+pi.*((y(end)+designVec(5)).^2-y(end).^2).*(xe-x(end-1));
+V = sum(pi.*(y(1:end-1)+t).^2-y(1:end-1).^2).*dx+pi.*((y(end)+t).^2-y(end).^2).*(xe-x(end-1));
 
 
 
