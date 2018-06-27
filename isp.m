@@ -18,6 +18,9 @@ end
 
 pepc = pressureRatioCalc(eps,0.01,1e-6);     % Pressure ratio
 Uexit = sqrt(2*Constants.gamma/(Constants.gamma - 1)*Constants.Rspess*Constants.Tcc*(1 - pepc^((Constants.gamma - 1)/Constants.gamma)));
-isp = Uexit/Constants.g;
+mdot = Constants.VH*Constants.Pcc*pi*rt^2/sqrt(Constants.Rspess*Constants.Tcc);
+
+Ueq = Uexit +  (pepc*Constants.Pcc-Constants.Patm)/mdot*eps*pi*rt^2;
+isp = Ueq/Constants.g;
 end
 
