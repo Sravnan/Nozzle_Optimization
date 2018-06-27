@@ -35,7 +35,7 @@ hin =1.213*0.026*mdot^0.8*Constants.mu^0.2*Constants.Cp*Pr^(-2/3)*(2*rt)^(-1.8);
 syms Tsin Tsout
 eq1 = hin  * (2*Tr/(Tr + Tsin))^(2/3)*(Tr - Tsin) - k/t *(Tsin - Tsout) ==0 ;
 eq2 = -hout* (Tsout - Tcool) - sigma * (Tsout^4-Tamb^4)+ k/t *(Tsin - Tsout) ==0;
-[Tin,Tout]= vpasolve([eq1,eq2],[Tsin, Tsout]);
+[Tin,Tout]= vpasolve([eq1,eq2],[Tsin, Tsout],[1200,800]);
 
 end
 
