@@ -10,7 +10,7 @@ function [ constraints ] = constraintNormal( designVec )
 %% Normalizing constraints.
 maxStress=Constants.TZM(1);     % Max stress in Pa
 maxTemp=1600+273;               % Max temp in K
-minISP=250;                     % Minimum ISP in s
+minISP=350;                     % Minimum ISP in s
 maxLength=1;                    % max length in meters
 maxMass=2;                     % max mass
 
