@@ -8,6 +8,7 @@ function [ constraints ] = constraintNormal( designVec )
 %
 
 %% Normalizing constraints.
+Pcc = Constants.Pcc;            % Chamber pressure
 Patm = Constants.Patm;          % Atmospheric Presure
 maxStress=Constants.TZM(1);     % Max stress in Pa
 maxTemp=1600+273;               % Max temp in K
@@ -28,7 +29,7 @@ constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
-constraints(6)= pRatio/(pc/patm)-1; % Pressure equality constraint
+constraints(6)= pRatio/(Pcc/Patm)-1; % Pressure equality constraint
 
 
 
