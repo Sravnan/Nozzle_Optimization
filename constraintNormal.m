@@ -12,22 +12,22 @@ Pcc = Constants.Pcc;            % Chamber pressure
 Patm = Constants.Patm;          % Atmospheric Presure
 maxStress=Constants.TZM(1);     % Max stress in Pa
 maxTemp=1600+273;               % Max temp in K
-minISP=350;                     % Minimum ISP in s
+minISP=400;                     % Minimum ISP in s
 maxLength=1;                    % max length in meters
 maxMass=2;                      % max mass
 minThrust=30000;
 
 %Importing values needed for the constraints
 [~,~,~,xe,V]=geometry(designVec);
-% ISP=isp(designVec);
-Stress=max(stress(designVec,Constants.tnoz));
+ISP=isp(designVec);
+Stress=max(stress(designVec));
 temp=tempThroat(designVec);
 mass=V*Constants.TZM(3);
 % pRatio = pressureRatioCalc(designVec(2),0.1,1e-6);
-Thrust=thrust(designVec);
+% Thrust=thrust(designVec);
 % Normalizing
 constraints(1)=xe/maxLength-1;      % Max length constrait
-constraints(2)=1-Thrust/minThrust;        % Min isp constraint
+constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
