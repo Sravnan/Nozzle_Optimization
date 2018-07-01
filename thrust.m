@@ -29,7 +29,7 @@ Uexit = sqrt(2*Constants.gamma/(Constants.gamma - 1)*Constants.Rspess*Constants.
 
 divLoss = 0.5*(1+cos((theta1+theta2)/2));
 
-thrust = divLoss*mdot * Uexit + (pepc*Constants.Pcc-Constants.Patm)*eps*pi*rt^2;
+thrust = -(divLoss*mdot * Uexit + (pepc*Constants.Pcc-Constants.Patm)*eps*pi*rt^2);
 
 end
 

@@ -18,7 +18,6 @@ for ii=1:length(x)
   xi(ii)=x(ii)+hx;
   fxplush=thrust(xi);
   dfdx(ii)=(fxplush-fx)/hx;
-  
   gxplush=constraintNormal(xi);
   dgdx(ii,:)=(gxplush-gx)/hx;
 end
