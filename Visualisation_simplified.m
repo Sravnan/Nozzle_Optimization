@@ -56,8 +56,8 @@ contour(rThroat, epsilon, con2, [0.1 0.1],'b--')   % Infeasible region
 contour(rThroat, epsilon, con3, [0.0 0.0],'y') % Stress constraint
 contour(rThroat, epsilon, con3, [0.1 0.1],'y--')   % Infeasible region
 
-contour(rThroat, epsilon, con4,'g','ShowText','on') % Temperature constraint
-% contour(rThroat, epsilon, con4,'g--')   % Infeasible region
+contour(rThroat, epsilon, con4,[0.0,0.0],'g') % Temperature constraint
+contour(rThroat, epsilon, con4,[0.1 0.1],'g--')   % Infeasible region
 
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
