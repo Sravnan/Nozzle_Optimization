@@ -67,8 +67,8 @@ while (~KKT)&&(iter<maxiter)
             KKT = true;
         end
     end
-    jter
-    xold = x
+    
+    xold = x;
     iter = iter+1;
 end
 
