@@ -23,9 +23,9 @@ tic
     % Assignment of design variables:
     designVec(1) = rThroat(i);
     designVec(2) = epsilon(j);
-    designVec(3) = 
-    designVec(4) = 86.156671;
-    designVec(5) = 33.3741953;
+    designVec(3) = Constants.t;
+    designVec(4) = Constants.theta1;
+    designVec(5) = Constants.theta2;
  	% Objective function
     obj = thrust(designVec);
     % Grid value of objective function:
