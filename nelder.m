@@ -1,19 +1,16 @@
-function [ xi ] = nelder( designVec )
+function [ opti,optimum ] = nelder( designVec )
 %Nelder mead approximation method
 %   Detailed explanation goes here
 
 
 %setup
-p=1;
-X=2;
 Y=2;
 beta=0.5;
-sigma=0.5;
-stop=100;
 x=designVec; %starting area
 % number of points;
 n=length(designVec)+1;
 % starting polygon
+
 for ii=1:n
    
    if ii==2
@@ -26,24 +23,24 @@ for ii=1:n
        x(ii-1)=x(ii-1)+1;
    elseif ii==6
        x(ii-1)=x(ii-1)+0.5;
+   elseif ii==7
+       x(ii-1)=x(ii-1)+0.5;
    end
    xi(ii,:)=x;
 end
 
-
-tol=1;
-p=[1000 2000 4000 8000 16000];
+optiii=xi;
+p=[1000 2000 4000 8000 16000 32000 64000 128000 256000];
 
 for kk=1:length(p)
 iter=0;
-while iter<50
-xi;
+while iter<200
+oldopti=optiii;
 % Ordering the points
 for jj=1:n
 fxi(jj,:)=objPenalty(xi(jj,:),p(kk));
 end
 sortf=sort(fxi,'ascend');
-tol=abs(sortf(1)-sortf(2));
 %find the worst point
 ind=find(fxi==max(fxi));
 % Find the points to use in the centroid.
@@ -66,20 +63,18 @@ else
     xcon=c+beta*(xi(ind,:)-c);
     xi(ind,:)=xcon;
 end
-
-
-
-
 iter=iter+1;
-xi;
-tol;
 
 
+iii=find(fxi==min(fxi));
+optiii=xi(iii,:);
+tol=abs(optiii-oldopti);
 
 end
-
+index=find(fxi==min(fxi));
+optimum(kk,:)=xi(index,:);
 end
-
+opti=optimum(length(p),:);
 
 
 

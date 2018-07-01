@@ -1,4 +1,4 @@
-clear all
+
 %% Visualization of simplified problem
 %
 %
@@ -35,15 +35,15 @@ tic
     con2(j,i) = con(2);    % Scaled ISP constraint
     con3(j,i) = con(3);    % Scaled stress constraint
     con4(j,i) = con(4);    % Scaled temperature constraint
-%     con5(j,i) = con(5);    % Scaled mass constraint
-%     con6(j,i) = con(6);    % Scaled min pressure constraint
+    con5(j,i) = con(5);    % Scaled mass constraint
+    con6(j,i) = con(6);    % Scaled min angle thetha 1
 
   end
   toc
 end
 %%
 close all
-contour(rThroat, epsilon, fobj,-2.5:0.05:-1,'ShowText','on')
+contour(rThroat, epsilon, fobj,-5:0.5:0,'ShowText','on')
 xlabel('Throat radius rThroat (m)'), ylabel('Area ratio epsilon (-)'), ...
    title('Figure 1, Design space of simplified problem final project')
 hold on

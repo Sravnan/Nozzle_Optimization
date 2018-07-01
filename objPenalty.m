@@ -3,9 +3,12 @@ function [ f ] = objPenalty( designVec,p )
 %   Detailed explanation goes here
 
 g=constraintNormal(designVec);
-penx=[length(designVec)];
 for ii=1:length(g)
-penx(ii)=max(0,g(ii));
+    if ii==2
+    penx(ii)=20*max(0,g(ii));
+    else
+    penx(ii)=max(0,g(ii));
+    end
 end
 penp=sum(penx);
 pen=penp^2*p;
