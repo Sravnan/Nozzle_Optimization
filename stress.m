@@ -9,17 +9,17 @@ function [ stress] = stress( designVec )
 %   stress       [Pa] 
 %% Check if simplified problem
 if length(designVec)==2
-    designVec(1) = designVec(1);
-    designVec(2) = designVec(2);
-    designVec(3) = Constants.t;
-    designVec(4) = Constants.theta1;
-    designVec(5) = Constants.theta2 ;
+    rt = designVec(1);
+    eps = designVec(2);
+    t = Constants.t;
+    theta1 = Constants.theta1;
+    theta2 = Constants.theta2 ;
 else
-    designVec(1)= designVec(1);
-    designVec(2) = designVec(2);
-    designVec(3) = designVec(3);
-    designVec(4) =designVec(4);
-    designVec(5) = designVec(5);
+    rt = designVec(1);
+    eps = designVec(2);
+    t = designVec(3);
+    theta1 =designVec(4);
+    theta2 = designVec(5);
 end
 
 %% Stress calculation
@@ -32,7 +32,7 @@ Pressure=[];
 for ii=1:length(Aratio)
    Pressure(ii)=pressureRatioCalc( Aratio(ii),pepc0,tol )*Constants.Pcc; 
 end
-stress=Pressure.*2.*y./(2.*designVec(5));
+stress=Pressure.*2.*y./(2.*t);
 
 end
 
