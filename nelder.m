@@ -4,8 +4,8 @@ function [ opti,optimum ] = nelder( designVec )
 
 
 %setup
-Y=1.5;
-beta=0.3;
+Y=2;
+beta=0.5;
 x=designVec; %starting area
 % number of points;
 n=length(designVec)+1;

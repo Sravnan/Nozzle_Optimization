@@ -63,8 +63,8 @@ contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
 
-% contour(rThroat, epsilon, con6, [0.0 0.0],'k') % theta 1 constraint
-% contour(rThroat, epsilon, con6, [0.1 0.1],'k--')   % Infeasible region
+contour(rThroat, epsilon, con6, [0.0 0.0],'k') % theta 1 constraint
+contour(rThroat, epsilon, con6, [0.1 0.1],'k--')   % Infeasible region
 
 % contour(rThroat, epsilon, con7, [0.0 0.0],'c') % pressure constraint
 % contour(rThroat, epsilon, con7, [0.1 0.1],'c--')   % Infeasible region

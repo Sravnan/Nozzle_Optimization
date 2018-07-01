@@ -49,7 +49,6 @@ for ii=ii
 if xi(ii)<xp
     theta=asin(xi(ii)/(0.382*rt));
     y(ii)=rt-(cos(theta)*0.382*rt-0.382*rt);
-    
 else
     y(ii)=(-b+sqrt(b^2-4*a*(c-xi(ii))))/(2*a);
     %y(ii)=0.4;
