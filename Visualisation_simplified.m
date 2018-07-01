@@ -9,9 +9,9 @@ clear all
 
 
 
-dx=0.005;
+dx=5;
 
-rThroat=0.005:dx:0.1;
+rThroat=5:dx:100;
 epsilon=1.1:2:50;
 
 
@@ -43,7 +43,7 @@ tic
 end
 %%
 close all
-contour(rThroat, epsilon, fobj,'ShowText','on')
+contour(rThroat, epsilon, fobj,-2.5:0.05:-1,'ShowText','on')
 xlabel('Throat radius rThroat (m)'), ylabel('Area ratio epsilon (-)'), ...
    title('Figure 1, Design space of simplified problem final project')
 hold on

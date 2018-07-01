@@ -26,11 +26,11 @@ classdef Constants
         %% Material Propperties [yield stress(Pa), desnity(kg/m^3), Thermal conductivity(W/(m*k)), Emmisivity(-)] @ 1500 C
         TZM=[100e6 10.2*1000 95 0.16];
         %% Simplified Problem design defaults
-        t = 0.002;                                                % Default nozzle wall thickness [m]
-        theta1 = 30*pi/180;                                       % Default nozzle divergence half angle [rad]
-        theta2 = 4*pi/180;                                        % Default nozzle exit half angle [rad]  
+        t = 2;                                                % Default nozzle wall thickness [mm]
+        theta1 = 30;                                       % Default nozzle divergence half angle [deg]
+        theta2 = 4;                                        % Default nozzle exit half angle [deg]  
         %% Nozzle convergent section
-        beta = 30*pi/180;
+        beta = 30;
         xconv = 0.3;
     end
 end

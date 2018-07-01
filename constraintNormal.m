@@ -30,7 +30,7 @@ constraints(1)=xe/maxLength-1;      % Max length constrait
 constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
-constraints(5)=mass/maxMass-1;      % Max mass constraint
+% constraints(5)=mass/maxMass-1;      % Max mass constraint
 % constraints(6)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
 
 

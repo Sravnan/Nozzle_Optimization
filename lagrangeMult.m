@@ -19,7 +19,7 @@ x=gbar'*gbar;
 % fgrad with gbar transpose
 y=gbar'*fgrad;
 %solving
-mu=x\y;
+mu=-x\y;
 
 
 end

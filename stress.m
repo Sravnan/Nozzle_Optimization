@@ -7,19 +7,19 @@ function [ stress] = stress( designVec )
 % Outputs:
 %   thickness(t) [m]
 %   stress       [Pa] 
-%% Check if simplified problem
+%% Check if simplified problem and convert to SI Units
 if length(designVec)==2
-    rt = designVec(1);
+    rt = 0.001*designVec(1);
     eps = designVec(2);
-    t = Constants.t;
-    theta1 = Constants.theta1;
-    theta2 = Constants.theta2 ;
+    t = 0.001*Constants.t;
+    theta1 = pi/180*Constants.theta1;
+    theta2 = pi/180*Constants.theta2 ;
 else
-    rt = designVec(1);
+    rt = 0.001*designVec(1);
     eps = designVec(2);
-    t = designVec(3);
-    theta1 =designVec(4);
-    theta2 = designVec(5);
+    t = 0.001*designVec(3);
+    theta1 =pi/180*designVec(4);
+    theta2 = pi/180*designVec(5);
 end
 
 %% Stress calculation

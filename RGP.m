@@ -3,8 +3,9 @@ function [ x,obj,iter] = RGP(x0,maxiter )
 KKT = false;
 iter = 1;
 x = x0;
+xold = x0;
 while (~KKT)&&(iter<maxiter)
-%% Search along direction
+%% Search along steepest descent direction
     
     %Determine gradient
     [dfdx,dgdx] = Gradient(x);
@@ -15,41 +16,58 @@ while (~KKT)&&(iter<maxiter)
 
     %% Determine new best direction
     % Projection onto constraint surface
-    dfdx = -0.1*dfdx/(norm(dfdx));
     if bound
-       conAct = abs(gx)<1e-2;
+       conAct = abs(gx)<1e-3;
        dgAct = dgdx(:,conAct);
        P = eye(length(x0)) - dgAct*inv(dgAct'*dgAct)*dgAct';
-       searchVec = P*dfdx;
+       searchVec = -P*dfdx;
+       
     else
-       searchVec = dfdx;
+       searchVec = -dfdx;
     end
-    searchVec
+    if norm(searchVec) > 1 
+        searchVec = searchVec/norm(searchVec);
+    end
     %Perform linesearch in direction of optimal search Vector
-    [x,obj] = lineSearch(@thrust,searchVec,x,[0,0.1],15,10);
-    x
-    
+    [x,obj] = lineSearch(@thrust,searchVec,x,[0,10],15,10);
+    gx = constraintNormal(x);
     while any(gx>1e-3)
-        conAct = gx>0;
+        
+        conAct = gx>1e-3;
         dgAct = dgdx(:,conAct);
         dhtdh = -inv(dgAct'*dgAct);
         ck = dhtdh*gx(conAct)';
-        x = x+dgAct*ck;
-        [~,dgdx] = Gradient(x);
+        tk = dgAct*ck;
+        if norm(tk)>1
+            tkscale = tk/norm(tk);
+        else
+            tkscale = tk;
+        end
+        x = x+tkscale;
+        [dfdx,dgdx] = Gradient(x);
         gx = constraintNormal(x); 
     end
     %% Check KKT conditions
-    % checking feasibility
-    ineq = gx < 0;
-    % Identify independent active constraints
-    % Compute lagrange multipliers    
-%     lagMult(conAct) = -dgAct\dfdx;
-%     lagMult(~conAct) =  0;
-%     % Check Multiplier values
-%     if all(lagMult)>0
-%         KKT = true;
-%     end
+    
+    difference = norm(x-xold);
+    if difference<1e-4
+        % creating gbar matrix with active constraint
+        gAct=abs(gx)<1e-3;
+        gbar=dgdx(:,gAct);
+        % Least sqares approximation of the lagrange multipliers
+        % Gbar with transpose gbar
+        A=gbar'*gbar;
+        % fgrad with gbar transpose
+        y=gbar'*dfdx;
+        %solving
+        mu=-A\y;
+        if all(mu>-1e-3)&&(~isempty(mu))
+            KKT = true;
+        end
+    end
+    xold = x;
     iter = iter+1;
 end
+
 end
 
