@@ -1,4 +1,4 @@
-
+function [  ] = v_s( designVec )
 %% Visualization of simplified problem
 %
 %
@@ -23,9 +23,6 @@ tic
     % Assignment of design variables:
     designVec(1) = rThroat(i);
     designVec(2) = epsilon(j);
-    designVec(3) = 
-    designVec(4) = 86.156671;
-    designVec(5) = 33.3741953;
  	% Objective function
     obj = thrust(designVec);
     % Grid value of objective function:
@@ -40,6 +37,7 @@ tic
     con4(j,i) = con(4);    % Scaled temperature constraint
     con5(j,i) = con(5);    % Scaled mass constraint
     con6(j,i) = con(6);    % Scaled min angle thetha 1
+%     con7(j,i) = con(7);    % Scaled min pressure thetha 1
 
   end
   toc
@@ -65,11 +63,16 @@ contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
 
-% contour(rThroat, epsilon, con6, [0.0 0.0],'g') % pressure constraint
-% contour(rThroat, epsilon, con6, [0.1 0.1],'g--')   % Infeasible region
+% contour(rThroat, epsilon, con6, [0.0 0.0],'k') % theta 1 constraint
+% contour(rThroat, epsilon, con6, [0.1 0.1],'k--')   % Infeasible region
+
+% contour(rThroat, epsilon, con7, [0.0 0.0],'c') % pressure constraint
+% contour(rThroat, epsilon, con7, [0.1 0.1],'c--')   % Infeasible region
+
+
 
 grid
-
+end
 
 
 

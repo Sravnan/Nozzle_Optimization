@@ -33,7 +33,7 @@ yp=rt+(1-cos(theta1))*0.382*rt;
 ye=sqrt(eps)*rt;
 % Constants for the calculation of the contour
 a=(tan(pi/2-theta2)-tan(pi/2-theta1))/(2*(ye-yp));
-b=tan(pi/2-theta1)-(tan(pi/2-theta2)-tan(pi/2-theta1))...
+b=tan(pi/2-theta1)-2*(tan(pi/2-theta2)-tan(pi/2-theta1))...
     /(2*(ye-yp))*yp;
 c=xp-a*yp^2-b*yp;
 % Length at nozzle exit
@@ -41,7 +41,7 @@ xe=a*ye^2+b*ye+c;
 
 %% Calculating x and y coordinates
 
-dx=0.005;
+dx=0.0005;
 xi=0:dx:xe;
 y=[];
 ii=1:length(xi);

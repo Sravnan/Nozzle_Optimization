@@ -28,7 +28,7 @@ if length(designVec) ==2
 else
     theta1 = designVec(4);
 end
-% pRatio = pressureRatioCalc(designVec(2),0.1,1e-6);
+pRatio = pressureRatioCalc(designVec(2),0.1,1e-6);
 % Thrust=thrust(designVec);
 % Normalizing
 constraints(1)=xe/maxLength-1;      % Max length constrait
@@ -37,7 +37,7 @@ constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
 constraints(6)=1-theta1/maxTheta1;
-% constraints(6)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
+% constraints(7)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
 
 
 
