@@ -31,8 +31,8 @@ while (~KKT)&&(iter<maxiter)
     %Perform linesearch in direction of optimal search Vector
     [x,obj] = lineSearch(@thrust,searchVec,x,[0,10],15,10);
     gx = constraintNormal(x);
+    jter = 1;
     while any(gx>1e-3)
-        
         conAct = gx>1e-3;
         dgAct = dgdx(:,conAct);
         dhtdh = -inv(dgAct'*dgAct);
@@ -46,7 +46,9 @@ while (~KKT)&&(iter<maxiter)
         x = x+tkscale;
         [dfdx,dgdx] = Gradient(x);
         gx = constraintNormal(x); 
+        jter = jter+1;
     end
+    
     %% Check KKT conditions
     
     difference = norm(x-xold);
@@ -65,7 +67,8 @@ while (~KKT)&&(iter<maxiter)
             KKT = true;
         end
     end
-    xold = x;
+    jter
+    xold = x
     iter = iter+1;
 end
 
