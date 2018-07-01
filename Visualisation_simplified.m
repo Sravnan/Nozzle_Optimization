@@ -8,6 +8,7 @@ clear all
 
 
 
+
 dx=0.005;
 
 rThroat=0.005:dx:0.1;
@@ -15,15 +16,15 @@ epsilon=1.1:2:50;
 
 
 % Matrix of output values for combinations of design variables rThroat and epsilon: 
-tic
+
 for j=1:1:length(epsilon)
-  tic
+tic
   for i=1:1:length(rThroat)
     % Assignment of design variables:
     designVec(1) = rThroat(i);
     designVec(2) = epsilon(j);
  	% Objective function
-    obj = isp(designVec);
+    obj = thrust(designVec);
     % Grid value of objective function:
     fobj(j,i) = obj; 
      
@@ -40,10 +41,9 @@ for j=1:1:length(epsilon)
   end
   toc
 end
-toc
 %%
 close all
-contour(rThroat, epsilon, fobj,[362:10:412],'ShowText','on')
+contour(rThroat, epsilon, fobj,'ShowText','on')
 xlabel('Throat radius rThroat (m)'), ylabel('Area ratio epsilon (-)'), ...
    title('Figure 1, Design space of simplified problem final project')
 hold on
@@ -56,8 +56,8 @@ contour(rThroat, epsilon, con2, [0.1 0.1],'b--')   % Infeasible region
 contour(rThroat, epsilon, con3, [0.0 0.0],'y') % Stress constraint
 contour(rThroat, epsilon, con3, [0.1 0.1],'y--')   % Infeasible region
 
-contour(rThroat, epsilon, con4, [0.0 0.0],'g') % Temperature constraint
-contour(rThroat, epsilon, con4, [0.1 0.1],'g--')   % Infeasible region
+contour(rThroat, epsilon, con4,'g','ShowText','on') % Temperature constraint
+% contour(rThroat, epsilon, con4,'g--')   % Infeasible region
 
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
