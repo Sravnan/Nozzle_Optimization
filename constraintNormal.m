@@ -36,7 +36,7 @@ constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
-constraints(6)=1-theta1/maxTheta1;
+constraints(6)=1-theta1/maxTheta1;  % Min divergence half angle constraint
 % constraints(7)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
 
 
