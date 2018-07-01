@@ -35,7 +35,7 @@ tic
     con2(j,i) = con(2);    % Scaled ISP constraint
     con3(j,i) = con(3);    % Scaled stress constraint
     con4(j,i) = con(4);    % Scaled temperature constraint
-    con5(j,i) = con(5);    % Scaled mass constraint
+%     con5(j,i) = con(5);    % Scaled mass constraint
 %     con6(j,i) = con(6);    % Scaled min pressure constraint
 
   end
