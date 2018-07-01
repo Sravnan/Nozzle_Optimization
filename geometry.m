@@ -40,7 +40,7 @@ c=xp-a*yp^2-b*yp;
 xe=a*ye^2+b*ye+c;
 
 %% Calculating x and y coordinates
-syms y;
+
 dx=0.005;
 xi=0:dx:xe;
 y=[];
