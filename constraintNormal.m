@@ -1,4 +1,4 @@
-function [ constraints ] = constraintNormal( designVec )
+function [ constraints, geq ] = constraintNormal( designVec )
 %constraintNormal The mormalized constraint functions are calculaed here. 
 %   Detailed explanation goes here
 % Input:
@@ -54,7 +54,11 @@ constraints(6)=1-theta1/minTheta1;  % Min divergence half angle constraint
 constraints(7)=theta1/maxTheta1-1;  % Max divergence half angle constraint
 constraints(8)=theta2/maxTheta2-1;  % Max divergence half angle constraint
 constraints(9)=10*thinwalled-1;     % Thin walled assumtion 
-constraints(7)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
+% constraints(10)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
+
+
+% Giving empty equality constraints
+geq=[];
 
 
 

@@ -18,13 +18,12 @@ epsilon=1.1:2:100.1;
 % Matrix of output values for combinations of design variables rThroat and epsilon: 
 
 for j=1:1:length(epsilon)
-tic
   for i=1:1:length(rThroat)
     % Assignment of design variables:
     designVec(1) = rThroat(i);
     designVec(2) = epsilon(j);
     designVec(3) = Constants.t;
-    designVec(4) = Constants.theta1;
+    designVec(4) = 38;
     designVec(5) = Constants.theta2;
  	% Objective function
     obj = thrust(designVec);
@@ -42,7 +41,6 @@ tic
     con6(j,i) = con(6);    % Scaled min angle thetha 1
 
   end
-  toc
 end
 %%
 close all
