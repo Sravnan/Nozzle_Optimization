@@ -16,7 +16,10 @@ minISP=400;                     % Minimum ISP in s
 maxLength=1;                    % max length in meters
 maxMass=2;                      % max mass
 minThrust=30000;
-maxTheta1 = 20;
+maxTheta1 = 60;
+minTheta1 = 20;
+maxTheta2 = 15;
+
 %Importing values needed for the constraints
 [~,~,~,xe,V]=geometry(designVec);
 ISP=isp(designVec);
@@ -24,11 +27,22 @@ Stress=max(stress(designVec));
 temp=tempThroatEff(designVec);
 mass=V*Constants.TZM(3);
 if length(designVec) ==2
+    t = Constants.t;
+else
+    t = designVec(3);
+end
+if length(designVec) ==2
     theta1 = Constants.theta1;
 else
     theta1 = designVec(4);
 end
+if length(designVec) ==2
+    theta2 = Constants.theta2;
+else
+    theta2 = designVec(5);
+end
 pRatio = pressureRatioCalc(designVec(2),0.1,1e-6);
+thinwalled=t/designVec(1);
 % Thrust=thrust(designVec);
 % Normalizing
 constraints(1)=xe/maxLength-1;      % Max length constrait
@@ -36,8 +50,11 @@ constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
 constraints(4)=temp/maxTemp-1;      % Max temperature constraint
 constraints(5)=mass/maxMass-1;      % Max mass constraint
-constraints(6)=1-theta1/maxTheta1;  % Min divergence half angle constraint
-% constraints(7)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
+constraints(6)=1-theta1/minTheta1;  % Min divergence half angle constraint
+constraints(7)=theta1/maxTheta1-1;  % Max divergence half angle constraint
+constraints(8)=theta2/maxTheta2-1;  % Max divergence half angle constraint
+constraints(9)=10*thinwalled-1;     % Thin walled assumtion 
+constraints(7)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
 
 
 

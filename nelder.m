@@ -43,7 +43,7 @@ ind=find(fxi==max(fxi));
 fx=fxi~=max(fxi);
 cx=xi(fx,:);
 % computing centroid
-c=1/(n-1)*sum(cx)
+c=1/(n-1)*sum(cx);
 % reflection
 alpha=1;
 xnew=c+alpha*(c-xi(ind(1),:));
