@@ -29,6 +29,6 @@ end
 % toc
 
 %%
-tic
-[opti,optimum]=nelder(x0);
-toc
+% tic
+% [opti,optimum]=nelder(x0);
+% toc
