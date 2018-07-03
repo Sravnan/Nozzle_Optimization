@@ -9,10 +9,10 @@ function [  ] = v_s( designVec )
 
 
 
-dx=2;
+dx=1;
 
-rThroat=5:dx:100;
-epsilon=5:2:100;
+rThroat=1.1:dx:90;
+epsilon=1.1:dx:90;
 
 
 % Matrix of output values for combinations of design variables rThroat and epsilon: 
@@ -35,8 +35,12 @@ for j=1:1:length(epsilon)
     con3(j,i) = con(3);    % Scaled stress constraint
     con4(j,i) = con(4);    % Scaled temperature constraint
     con5(j,i) = con(5);    % Scaled mass constraint
-%     con6(j,i) = con(6);    % Scaled min angle thetha 1
-%     con7(j,i) = con(7);    % Scaled min pressure thetha 1
+    con6(j,i) = con(6);    % Scaled min angle thetha 1
+    con7(j,i) = con(7);    % Scaled max thetha 1
+    con8(j,i) = con(8);    % Scaled min angle thetha 2
+    con9(j,i) = con(9);    % Scaled thin walled check
+
+
 
   end
 end
@@ -61,11 +65,18 @@ contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
 
-% contour(rThroat, epsilon, con6, [0.0 0.0],'k') % theta 1 constraint
-% contour(rThroat, epsilon, con6, [0.1 0.1],'k--')   % Infeasible region
+contour(rThroat, epsilon, con6, [0.0 0.0],'r') % theta 1 constraint
+contour(rThroat, epsilon, con6, [0.1 0.1],'r--')   % Infeasible region
 
-% contour(rThroat, epsilon, con7, [0.0 0.0],'c') % pressure constraint
-% contour(rThroat, epsilon, con7, [0.1 0.1],'c--')   % Infeasible region
+contour(rThroat, epsilon, con7, [0.0 0.0],'c') % max theta 2
+contour(rThroat, epsilon, con7, [0.1 0.1],'c--')   % Infeasible region
+
+contour(rThroat, epsilon, con8, [0.0 0.0],'k') % max theta 1
+contour(rThroat, epsilon, con8, [0.1 0.1],'k--')   % Infeasible region
+
+contour(rThroat, epsilon, con9, [0.0 0.0],'c') % max thickness/length
+contour(rThroat, epsilon, con9, [0.1 0.1],'c--')   % Infeasible region
+
 
 
 

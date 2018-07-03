@@ -23,7 +23,7 @@ for j=1:1:length(epsilon)
     designVec(1) = rThroat(i);
     designVec(2) = epsilon(j);
     designVec(3) = Constants.t;
-    designVec(4) = 38;
+    designVec(4) = Constants.theta1;
     designVec(5) = Constants.theta2;
  	% Objective function
     obj = thrust(designVec);

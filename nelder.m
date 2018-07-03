@@ -4,8 +4,9 @@ function [ opti,optimum ] = nelder( designVec )
 
 
 %setup
-Y=2;
+Y=3;
 beta=0.5;
+alpha=1;
 x=designVec; %starting area
 % number of points;
 n=length(designVec)+1;
@@ -31,7 +32,7 @@ p=[500 1000 2000 4000 8000 16000 32000 64000 128000 256000];
 
 for kk=1:length(p)
 iter=0;
-while iter<200
+while iter<250
 % Ordering the points
 for jj=1:n
 fxi(jj,:)=objPenalty(xi(jj,:),p(kk));
@@ -45,15 +46,14 @@ cx=xi(fx,:);
 % computing centroid
 c=1/(n-1)*sum(cx);
 % reflection
-alpha=1;
+
 xnew=c+alpha*(c-xi(ind(1),:));
 fxnew=objPenalty(xnew,p(kk));
 better=fxnew<=sortf;
 if better(1)==1
     xexp=c+Y*(xnew-c);
     xi(ind(1),:)=xexp;
-end
-if any(better(2:end)>=1)
+elseif any(better(2:end)>=1)
     xi(ind(1),:)=xnew;
 else
     xcon=c+beta*(xi(ind(1),:)-c);
@@ -64,7 +64,7 @@ xi;
 
 end
 index=find(fxi==min(fxi));
-optimum(kk,:)=xi(index,:);
+optimum(kk,:)=xi(index(1),:);
 end
 opti=optimum(length(p),:);
 

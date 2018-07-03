@@ -1,4 +1,4 @@
-function [mu] = lagrangeMult( designVec )
+function [mu,gbar] = lagrangeMult( designVec )
 %lagrangeMult calculates the lagrange multipliers with least squares
 %  Input:
 %   designVec
