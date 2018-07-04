@@ -2,9 +2,10 @@
 %
 %
 %
+clear all
 %
-%
-x0=[30;15;2;30;4];
+y0=[30;15]; %;2;30;4];
+x0=[30;15]; %;2;30;4];
 A=[];
 b=[];
 Aeq=[];
@@ -18,23 +19,20 @@ nonlcon=@constraintNormal;
 options = optimset('Display','iter');
 for ii=1:length(p)
     fun1=@(y)objPenalty(y,p(ii));
-    y=fminsearch(fun1,x0,options);
-    x0=y;
+    y=fminsearch(fun1,y0,options);
+    y0=y;
     optimumM(ii,:)=y;
 end
 
-% options = optimoptions('fmincon','Display','iter','ConstraintTolerance',1e-9,'Algorithm','sqp');%
-% 
-% x0=[30;15];
-% [x,fval,z,s]=fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options);
-% 
-% x0=[30;15];
-% %
-% tic
-% [opti,optimum]=nelder(x0);
-% toc
-% x0=[30;15];
-% rgp=RGP(x0,1000);
+options = optimoptions('fmincon','Display','iter','ConstraintTolerance',1e-9,'StepTolerance',1e-9);%
+
+[x,fval,z,s]=fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlcon,options);
+
+%
+tic
+[opti,optimum]=nelder(x0);
+toc
+rgp=RGP(x0,1000);
 
 
 

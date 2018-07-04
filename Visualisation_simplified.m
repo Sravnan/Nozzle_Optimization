@@ -9,10 +9,10 @@
 
 
 
-dx=2;
+dx=1;
 
-rThroat=5:dx:100;
-epsilon=1.1:2:100.1;
+rThroat=5:dx:80;
+epsilon=2:dx:50;
 
 
 % Matrix of output values for combinations of design variables rThroat and epsilon: 
@@ -44,21 +44,22 @@ for j=1:1:length(epsilon)
 end
 %%
 close all
-contour(rThroat, epsilon, fobj,-5:0.5:0,'ShowText','on')
+contour(rThroat, epsilon, fobj,-5:0.5:-0.5,'ShowText','on')
 xlabel('Throat radius rThroat (m)'), ylabel('Area ratio epsilon (-)'), ...
-   title('Figure 1, Design space of simplified problem final project')
+%    title('Figure 1, Design space of simplified problem final project')
 hold on
 contour(rThroat, epsilon, con1, [0.0 0.0],'r') % Lenght constraint
 contour(rThroat, epsilon, con1, [0.1 0.1],'r--') % Infeasible region
+
 
 contour(rThroat, epsilon, con2, [0.0 0.0],'b') % ISP constraint
 contour(rThroat, epsilon, con2, [0.1 0.1],'b--')   % Infeasible region
 
 contour(rThroat, epsilon, con3, [0.0 0.0],'y') % Stress constraint
-contour(rThroat, epsilon, con3, [0.1 0.1],'y--')   % Infeasible region
+contour(rThroat, epsilon, con3, [0.05 0.05],'y--')   % Infeasible region
 
-contour(rThroat, epsilon, con4,[0.0,0.0],'g') % Temperature constraint
-contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
+% contour(rThroat, epsilon, con4,[0.0,0.0],'g') % Temperature constraint
+% contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
 
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
@@ -66,8 +67,16 @@ contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
 % contour(rThroat, epsilon, con6, [0.0 0.0],'g') % pressure constraint
 % contour(rThroat, epsilon, con6, [0.1 0.1],'g--')   % Infeasible region
 
-grid
 
+plot(x(1),x(2),'r*')
+plot(y(1),y(2),'b*')
+plot(opti(1),opti(2),'g*')
+plot(rgp(1),rgp(2),'m*')
+legend('Objective function','Length constraint','Length constraint infeasable region','ISP constraint','ISP constraint infeasable region','Stress constraint',...
+    'Stress constraint infeasable region','Mass constraint','Mass constraint infeasable region','fmincon optimum point','fminsearch optimum point','Custom Nelder-Mead optimum point','RGP optimum point')
+grid
+set(gca,'FontSize',12)
+% legend('Objective function','ISP constraint','Mass constraint','fmincon optimum point','fminsearch optimum point','Custom Nelder-Mead optimum point','RGP optimum point')
 
 
 
