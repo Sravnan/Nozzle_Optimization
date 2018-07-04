@@ -1,4 +1,4 @@
-function constraintCheck(designVec)
+function gradientCheck(designVec)
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
 x = designVec;
