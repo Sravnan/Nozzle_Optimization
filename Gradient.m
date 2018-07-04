@@ -8,7 +8,7 @@ function [ dfdx,dgdx ] = Gradient( designVec )
 x = designVec;
 
 % Forward finite diffence gradients of objective function and constraints
-hx = 1e-10;
+hx = 1e-8;
 fx = thrust(x);
 gx = constraintNormal(x);
 dgdx=zeros(length(x),length(gx));

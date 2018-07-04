@@ -1,6 +1,18 @@
 function gradientCheck(designVec)
 %UNTITLED3 Summary of this function goes here
 %   Detailed explanation goes here
+if length(designVec)==2
+    designVec(3)=Constants.t;
+    designVec(4)=Constants.theta1;
+    designVec(5)=Constants.theta2;
+else
+    designVec=designVec;
+end
+
+
+
+
+
 x = designVec;
 hxi = logspace(-20,0,100); % vector of finite difference steps
 for i=1:1:length(hxi)
