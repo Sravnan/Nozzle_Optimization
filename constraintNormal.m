@@ -18,6 +18,7 @@ maxMass=2;                      % max mass in kg
 maxTheta1 = 60;
 minTheta1 = 20;
 maxTheta2 = 15;
+tmin=0.1;
 
 %Importing values needed for the constraints
 [~,~,~,xe,V]=geometry(designVec);
@@ -50,7 +51,7 @@ constraints(5)=mass/maxMass-1;      % Max mass constraint
 constraints(6)=1-theta1/minTheta1;  % Min divergence half angle theta1 constraint
 constraints(7)=theta1/maxTheta1-1;  % Max divergence half angle theta1 constraint
 constraints(8)=theta2/maxTheta2-1;  % Max divergence half angle theta2 constraint
-constraints(9)=10*thinwalled-1;     % Thin walled assumtion 
+constraints(9)=10*thinwalled-1;     % Thin walled assumtion
 % constraints(10)= pRatio/(Patm/Pcc)-1; % Pressure equality constraint
 
 
