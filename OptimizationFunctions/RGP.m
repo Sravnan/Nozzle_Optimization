@@ -52,7 +52,7 @@ while (~KKT)&&(iter<maxiter)
     %% Check KKT conditions
     
     difference = norm(x-xold);
-    if difference<1e-4
+    if difference<1e-2
         % creating gbar matrix with active constraint
         gAct=abs(gx)<1e-3;
         gbar=dgdx(:,gAct);

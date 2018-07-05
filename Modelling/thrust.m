@@ -1,4 +1,4 @@
-function [ thrust ] = thrust( designVec )
+e function [ thrust ] = thrust( designVec )
 %Calcuate thrust of design
 % Inputs:
 % designVec = vector of design elements, (1) is thetap, (2) is thetae, (3)
