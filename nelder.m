@@ -28,11 +28,11 @@ for ii=1:n
    xi(ii,:)=x;
 end
 
-p=[500 1000 2000 4000 8000 16000 32000 64000 128000 256000 512000];
+p=[16000 32000 64000 128000 256000 512000];
 
 for kk=1:length(p)
 iter=0;
-while iter<400
+while iter<300
 % Ordering the points
 for jj=1:n
 fxi(jj,:)=objPenalty(xi(jj,:),p(kk));
