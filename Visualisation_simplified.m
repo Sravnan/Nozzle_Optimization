@@ -6,6 +6,8 @@
 %
 %
 
+addpath('Modelling')
+addpath('OptimizationFunctions')
 
 
 
