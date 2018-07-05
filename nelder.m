@@ -4,8 +4,8 @@ function [ opti,optimum ] = nelder( designVec )
 
 
 %setup
-Y=3;
-beta=0.5;
+Y=2.6;
+beta=0.4;
 alpha=1;
 x=designVec; %starting area
 % number of points;
@@ -18,17 +18,27 @@ for ii=1:n
        x(ii-1)=x(ii-1)+3;
    elseif ii==3
        x(ii-1)=x(ii-1)+1;
+       x(ii-2)=x(ii-2)+1;
    elseif ii==4
        x(ii-1)=x(ii-1)+0.5;
+       x(ii-2)=x(ii-2)+0.5;
+       x(ii-3)=x(ii-3)+0.5;
    elseif ii==5
        x(ii-1)=x(ii-1)+3;
+       x(ii-2)=x(ii-2)+3;
+       x(ii-3)=x(ii-3)+3;
+       x(ii-4)=x(ii-4)+3;
    elseif ii==6
        x(ii-1)=x(ii-1)+1;
+       x(ii-2)=x(ii-2)+1;
+       x(ii-3)=x(ii-3)+1;
+       x(ii-4)=x(ii-4)+1;
+       x(ii-5)=x(ii-5)+1;
    end
    xi(ii,:)=x;
 end
 
-p=[16000 32000 64000 128000 256000 512000];
+p=[500 1000 2000 4000 8000 16000 32000 64000 128000 256000 512000];
 
 for kk=1:length(p)
 iter=0;
@@ -52,7 +62,12 @@ fxnew=objPenalty(xnew,p(kk));
 better=fxnew<=sortf;
 if better(1)==1
     xexp=c+Y*(xnew-c);
-    xi(ind(1),:)=xexp;
+    fexp=objPenalty(xexp,p(kk));
+    if fexp<fxnew
+        xi(ind(1),:)=xexp;
+    else
+        xi(ind(1),:)=xnew;
+    end
 elseif any(better(2:end)>=1)
     xi(ind(1),:)=xnew;
 else
