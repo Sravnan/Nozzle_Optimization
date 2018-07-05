@@ -1,13 +1,11 @@
 
 %% Visualization of simplified problem
-%
-%
-%
-%
-%
-
-
-
+% Script for making a visulization of the simplified problem. 
+% 
+%% #####################################################################
+%   Run after running Optimization_script in order to plot the optimum
+%   points, also this only works for the simplified problem
+%% #####################################################################
 
 dx=1;
 
@@ -38,11 +36,11 @@ for j=1:1:length(epsilon)
     con3(j,i) = con(3);    % Scaled stress constraint
     con4(j,i) = con(4);    % Scaled temperature constraint
     con5(j,i) = con(5);    % Scaled mass constraint
-    con6(j,i) = con(6);    % Scaled min angle thetha 1
+
 
   end
 end
-%%
+%% Plotting
 close all
 contour(rThroat, epsilon, fobj,-5:0.5:-0.5,'ShowText','on')
 xlabel('Throat radius rThroat (m)'), ylabel('Area ratio epsilon (-)'), ...
@@ -58,14 +56,11 @@ contour(rThroat, epsilon, con2, [0.1 0.1],'b--')   % Infeasible region
 contour(rThroat, epsilon, con3, [0.0 0.0],'y') % Stress constraint
 contour(rThroat, epsilon, con3, [0.05 0.05],'y--')   % Infeasible region
 
-% contour(rThroat, epsilon, con4,[0.0,0.0],'g') % Temperature constraint
-% contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
+contour(rThroat, epsilon, con4,[0.0,0.0],'g') % Temperature constraint
+contour(rThroat, epsilon, con4,[0.01 0.01],'g--')   % Infeasible region
 
 contour(rThroat, epsilon, con5, [0.0 0.0],'m') % Mass constraint
 contour(rThroat, epsilon, con5, [0.1 0.1],'m--')   % Infeasible region
-
-% contour(rThroat, epsilon, con6, [0.0 0.0],'g') % pressure constraint
-% contour(rThroat, epsilon, con6, [0.1 0.1],'g--')   % Infeasible region
 
 
 plot(x(1),x(2),'r*')
@@ -76,7 +71,7 @@ legend('Objective function','Length constraint','Length constraint infeasable re
     'Stress constraint infeasable region','Mass constraint','Mass constraint infeasable region','fmincon optimum point','fminsearch optimum point','Custom Nelder-Mead optimum point','RGP optimum point')
 grid
 set(gca,'FontSize',12)
-% legend('Objective function','ISP constraint','Mass constraint','fmincon optimum point','fminsearch optimum point','Custom Nelder-Mead optimum point','RGP optimum point')
+
 
 
 

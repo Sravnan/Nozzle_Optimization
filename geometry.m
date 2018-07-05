@@ -8,6 +8,7 @@ function [x,y,Aratio,xe,V] = geometry(designVec)
 %   y coordinate (m)
 %   Aratio area ratio (-)
 %   xe exit lenght (m)
+%   Vollume (kg/m^3)
 
 %% Check if simplified problem and convert to SI Units
 if length(designVec)==2
@@ -52,7 +53,6 @@ if xi(ii)<xp
     y(ii)=rt-(cos(theta)*0.382*rt-0.382*rt);
 else
     y(ii)=(-b+sqrt(b^2-4*a*(c-xi(ii))))/(2*a);
-    %y(ii)=0.4;
 end
 end
 y(length(xi)+1)=ye;

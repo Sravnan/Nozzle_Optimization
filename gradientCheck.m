@@ -1,6 +1,15 @@
 function gradientCheck(designVec)
-%UNTITLED3 Summary of this function goes here
-%   Detailed explanation goes here
+%gradientCheck function to check the influence of step size on the
+%gradients
+%   
+%   Input:
+%       designVec
+%   Output:
+%       several plots
+%
+%
+
+% Setting up values
 if length(designVec)==2
     designVec(3)=Constants.t;
     designVec(4)=Constants.theta1;
@@ -17,7 +26,7 @@ x = designVec;
 hxi = logspace(-20,0,100); % vector of finite difference steps
 for i=1:1:length(hxi)
 
-  % Finite diffence step
+% Finite diffence step
   hx = hxi(i);
 
 % Design point for which gradients are computed 
@@ -37,7 +46,7 @@ for ii=1:length(x)
   dgdx(ii,:)=(gxplush-gx)/hx;
 end
 
-
+% Gradients
 Df(:,i)=dfdx;
 Dg1(:,i)=dgdx(:,1);
 Dg2(:,i)=dgdx(:,2);
@@ -51,7 +60,7 @@ Dg9(:,i)=dgdx(:,9);
 
 
 end
-%%
+%% Plotting
 figure
 subplot(231)
 semilogx(hxi,Df(1,:))
