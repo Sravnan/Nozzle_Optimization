@@ -1,12 +1,12 @@
 function [ dfdx,dgdx ] = Gradient( designVec )
 %Gradient Calculating gradients of objective functions and constraints
-%   
-%   Inputs: 
-%       designVec
-%   Outputs:
-%       gradients of the objective function
-%       gradients of the constraints 
-%
+% Inputs:
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
+% Oututs:
+%   dfdx        = gradient of objective wrt to all variables in designVec
+%   dgdx        = gradient matrix o constraints wrt to all var in designVec
 
 %% Creating gradients of the design point.
 

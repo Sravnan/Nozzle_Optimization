@@ -1,13 +1,12 @@
 function [ f ] = objPenalty( designVec,p )
 %objPenalty Computes the objective function pluss the penalty
+% Inputs:
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
+% Oututs:
+%   f           = objective function including penalty
 %   
-%   Inputs:
-%       designVec
-%       penalization factor
-%
-%   Outputs:
-%       function value plus penalization factor
-
 g=constraintNormal(designVec);
 for ii=1:length(g)
         % Extra penalization on expantion ratio constraint so that the 

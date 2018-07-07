@@ -1,10 +1,11 @@
 function [ constraints, geq ] = constraintNormal( designVec )
 %constraintNormal The mormalized constraint functions are calculaed here. 
-%   Detailed explanation goes here
 % Input:
-%   designVec
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
 % Output:
-%   constraints  vector of all the constraint functions. 
+%   constraints = vector of all the constraint functions. 
 %
 
 %% Normalizing constraints.
@@ -21,7 +22,8 @@ maxTheta2 = 15;                 % max divergence half angle theta2 in deg
 tmin=0.1;                       % min thickness in mm
 emin=4;                         % min expantion ratio
 %Importing values needed for the constraints
-if length(designVec)==2
+%% Check if simplified problem
+if length(designVec)==2  %
     rt = designVec(1);
     eps = designVec(2);
     t = Constants.t;
@@ -34,6 +36,7 @@ else
     theta1 =designVec(4);
     theta2 = designVec(5);
 end
+%% Evaluate Model at designpoint
 [~,~,~,xe,V]=geometry(designVec);
 ISP=isp(designVec);
 Stress=max(stress(designVec));
@@ -41,7 +44,7 @@ temp=tempThroatEff(designVec);
 mass=V*Constants.TZM(3);
 thinwalled=t/designVec(1);
 
-% Normalizing
+%% Normalize constraints
 constraints(1)=xe/maxLength-1;      % Max length constrait
 constraints(2)=1-ISP/minISP;        % Min isp constraint
 constraints(3)=Stress/maxStress-1;  % Max stress constraint
@@ -54,8 +57,6 @@ constraints(9)=10*thinwalled-1;     % Thin walled assumtion
 % Addidional constraints for Nelder only activate while running Nelder
 constraints(10)=1-eps/emin;
 constraints(11)=1-t/tmin;
-
-
 
 % Giving empty equality constraints for fmincon
 geq=[];

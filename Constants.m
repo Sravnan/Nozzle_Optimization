@@ -2,7 +2,6 @@
 % That are used in most of the programs to compute aspects that 
 % the optimization needs. 
 %% Class creation
-
 classdef Constants
     properties(Constant=true)
         %% Environment Variables
@@ -29,8 +28,5 @@ classdef Constants
         t = 2;                                                % Default nozzle wall thickness [mm]
         theta1 = 30;                                       % Default nozzle divergence half angle [deg]
         theta2 = 4;                                        % Default nozzle exit half angle [deg]  
-        %% Nozzle convergent section
-        beta = 30;
-        xconv = 0.3;
     end
 end

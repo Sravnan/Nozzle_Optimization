@@ -1,13 +1,28 @@
 function [ xcenter,ycenter, ii] = goldenSection(F, bounds , maxiter,tol)
-%Use Golden Section method to find minimum of unconstrained problem
+%Use Golden Section method to find minimum of unconstrained 1-d problem
+% Inputs:
+%   F           = function handle of 1-d function to minimize
+%   bounds      = array containing two elements, start and end of search
+%   maxiter     = maximum allowed number of iterations
+%   tol         = allowed tolerance of error
+% Oututs:
+%   xcenter     = location of center of final bounds
+%   ycenter     = function value at center of final bounds
+%   ii          = number of iterations 
+
+
+
+% Define phi
 phi = (-1+sqrt(5))/2;
+% Set initial inner, outer and center points
 xinner = bounds(1);
 xouter = bounds(2);
 DeltaX = xouter-xinner;
 yinner = F(xinner);
 youter = F(xouter);
-ii = 1;
+ii = 1; % Counter
 difference = 1e4 ;
+% While within max iterations or tolerance not met:
 while (ii<maxiter)&&(difference>tol)
     %% Determine value at bounds and center
     xcenter = (xinner+xouter)/2;

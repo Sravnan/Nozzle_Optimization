@@ -1,17 +1,10 @@
-
-%% Visualization of simplified problem
-
-
 addpath('Modelling')
 addpath('OptimizationFunctions')
-
-
-
+%% Visualization of simplified problem
 % Script for making a visulization of the simplified problem. 
-% 
+% Creates Contour plots of simplified problem
 %   Run after running Optimization_script in order to plot the optimum
 %   points, also this only works for the simplified problem
-%% #####################################################################
 
 dx=1;
 

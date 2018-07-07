@@ -1,12 +1,13 @@
 function [ stress] = stress( designVec )
 %Stress Stress calculator for each cross section 
-%   Detailed explanation goes here
 % Inputs:
-%   designVec
-%
-% Outputs:
-%   thickness(t) [m]
-%   stress       [Pa] 
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
+% Oututs:
+%   stress      = array of local hoop stress (Pa)
+
+
 %% Check if simplified problem and convert to SI Units
 if length(designVec)==2
     rt = 0.001*designVec(1);
@@ -28,7 +29,7 @@ maxStress=Constants.TZM(1)/sf; %Max stress of titanium
 [~,y,Aratio]=geometry(designVec);
 tol=0.01;
 pepc0=0;
-Pressure=[];
+Pressure=zeros(1,length(Aratio));
 for ii=1:length(Aratio)
    Pressure(ii)=pressureRatioCalc( Aratio(ii),pepc0,tol )*Constants.Pcc; 
 end

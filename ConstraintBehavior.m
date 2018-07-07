@@ -1,45 +1,43 @@
 close all;
 clear all;
 clc;
-
 addpath('Modelling')
 addpath('OptimizationFunctions')
 %% File to investigate linearity, convexity and monotonicity of functions
 % Design vector set up:
-%Set up design vectors
+% Set up design vectors
 n = 500;% Number of elements 
 rDefault = 30* ones(n,1); % Default throat radus
-rup = 50;
-rlow = 10;
+rup = 50; % Upper bound of radius for plots
+rlow = 10; % lower bound of radius for plots
 
 epsDefault =  15* ones(n,1);% Default expansion ratio
-epsup = 60;
-epslow = 5;
+epsup = 60;% Upper bound of expansion ratio  for plots
+epslow = 5; % Lower bound of expansion for plots
 
 tDefault = 2* ones(n,1); % Default thickness
-tup = 10;
-tlow = 0.5;
+tup = 10; %Upper bound of thickness for plots
+tlow = 0.5; %Lower bound of thickness for plots
 
 theta1Default = 30 * ones(n,1);% Default angle 1
-theta1up = 50 ;
-theta1low = 10 ;
+theta1up = 50 ; % Upper bound of theta 1 for plots
+theta1low = 10 ; % Lower bound of theta 1 for plots
 theta2Default =  4 * ones(n,1);% Default angle 2
-theta2up = 20 ;
-theta2low = 2 ;
-%% Varied vectors
+theta2up = 20 ; % Upper bound of theta 2 for plots
+theta2low = 2 ; % Lower bound of theta 2 for plots
+%% Create Varied vectors
 rVaried = linspace(rlow,rup,n)';
 epsVaried = linspace(epslow,epsup,n)';
 tVaried = linspace(tlow,tup,n)';
 theta1Varied = linspace(theta1low,theta1up,n)';
 theta2Varied = linspace(theta2low,theta2up,n)';
-
+%Make matrix of varied design vectors
 designVec1 = [rVaried,epsDefault,tDefault,theta1Default,theta2Default];
 designVec2 = [rDefault,epsVaried,tDefault,theta1Default,theta2Default];
 designVec3 = [rDefault,epsDefault,tVaried,theta1Default,theta2Default];
 designVec4 = [rDefault,epsDefault,tDefault,theta1Varied,theta2Default];
 designVec5 = [rDefault,epsDefault,tDefault,theta1Default,theta2Varied];
-%% Set up constraint vectors
-
+%% Set up objective + constraint vectors
 values1 = zeros(n,10);
 values2 = zeros(n,10);
 values3 = zeros(n,10);

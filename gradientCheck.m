@@ -1,14 +1,12 @@
 function gradientCheck(designVec)
 %gradientCheck function to check the influence of step size on the
 %gradients
+% Inputs:
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
+% Oututs:
 %   
-%   Input:
-%       designVec
-%   Output:
-%       several plots
-%
-%
-
 % Setting up values
 if length(designVec)==2
     designVec(3)=Constants.t;

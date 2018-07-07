@@ -8,11 +8,12 @@ desnelder = [59.6277; 10.1317 ; 2.4512;48.4057 ;9.2783];
 dessearch =[69.9254 ; 10.2817 ; 2.0732;57.8163 ;14.9917]; 
 descon = [35.3640 ; 15.3782 ; 2.0223;29.9089 ;3.9424];
 desrgp =[39.7278 ;10.2945 ; 1.1771;20.0178 ;2.8409] ;
+%% Create geometries
 [xnelder,ynelder] = geometry(desnelder);
 [xsearch,ysearch] = geometry(dessearch);
 [xcon,ycon] = geometry(descon) ;
 [xrgp,yrgp] = geometry(desrgp);
-
+%% Plotting
 figure
 plot(xnelder,ynelder,'y', 'Linewidth', desnelder(3))
 hold on

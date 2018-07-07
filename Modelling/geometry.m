@@ -2,13 +2,15 @@ function [x,y,Aratio,xe,V] = geometry(designVec)
 %geometry is a function that coputes the x and y coordinates of the bell
 %nozzle
 % Inputs:
-%   designVec
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
 % Oututs:
-%   x coordinate (m)
-%   y coordinate (m)
-%   Aratio area ratio (-)
-%   xe exit lenght (m)
-%   Vollume (kg/m^3)
+%   x           = array of longitudinal positions (m)
+%   y           = array of radiuses (m)
+%   Aratio      = array of area ratio (-)
+%   xe          = exit length (m)
+%   V           = Volume of nozzle wall (kg/m^3)
 
 %% Check if simplified problem and convert to SI Units
 if length(designVec)==2
@@ -40,20 +42,18 @@ c=xp-a*yp^2-b*yp;
 % Length at nozzle exit
 xe=a*ye^2+b*ye+c;
 
-
 %% Calculating x and y coordinates
-
 dx=0.0005;
 xi=0:dx:xe;
 y=[];
 ii=1:length(xi);
 for ii=ii
-if xi(ii)<xp
-    theta=asin(xi(ii)/(0.382*rt));
-    y(ii)=rt-(cos(theta)*0.382*rt-0.382*rt);
-else
-    y(ii)=(-b+sqrt(b^2-4*a*(c-xi(ii))))/(2*a);
-end
+    if xi(ii)<xp
+        theta=asin(xi(ii)/(0.382*rt));
+        y(ii)=rt-(cos(theta)*0.382*rt-0.382*rt);
+    else
+        y(ii)=(-b+sqrt(b^2-4*a*(c-xi(ii))))/(2*a);
+    end
 end
 y(length(xi)+1)=ye;
 x=xi;
@@ -64,7 +64,6 @@ Aratio=(y.^2.*pi)./Athroat;
 
 %% Calculating Volume
 V = sum(pi.*(y(1:end-1)+t).^2-y(1:end-1).^2).*dx+pi.*((y(end)+t).^2-y(end).^2).*(xe-x(end-1));
-
 
 
 end

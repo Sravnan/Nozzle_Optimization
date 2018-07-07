@@ -1,10 +1,12 @@
 function [mu,gbar] = lagrangeMult( designVec )
 %lagrangeMult calculates the lagrange multipliers with least squares
 %  Input:
-%   designVec
+%   designVec   = vector of design elements,(1) throat radius ,(2)
+%   expansion ratio, optional (3) thickness, optional (4) throat divergence
+%   half angle, optionel (5) exit divergence half angle
 %  Output:
-%   mu (the lagrange multipliers)
-%
+%   mu          = array of the lagrange multipliers
+%   gbar        = gradient matrix of active constraints
 
 
 % Importing gradients
