@@ -2,6 +2,8 @@ close all;
 clear all;
 clc;
 
+addpath('Modelling')
+addpath('OptimizationFunctions')
 %% File to investigate linearity, convexity and monotonicity of functions
 % Design vector set up:
 %Set up design vectors
@@ -11,7 +13,7 @@ rup = 50;
 rlow = 10;
 
 epsDefault =  15* ones(n,1);% Default expansion ratio
-epsup = 40;
+epsup = 60;
 epslow = 5;
 
 tDefault = 2* ones(n,1); % Default thickness
@@ -54,6 +56,8 @@ for ii = 1:n
 end
 %% Plotting
 close all;
+purple = [0.5,0,0.5];
+orange = [0.9,80/255,0];
 fontsize = 12;
 linewidth = 1.5;
 set(0, 'DefaultLineLineWidth', linewidth);
@@ -116,14 +120,16 @@ set(gca, 'FontSize',fontsize)
 figure
 % title('Constraints as a function of t')
 hold on
-plot(tVaried, values3(:,2),'k')
-plot(tVaried, values3(:,3),'r')
+
 plot(tVaried, values3(:,4),'g')
 plot(tVaried, values3(:,5),'b')
 plot(tVaried, values3(:,6),'m')
+
+plot(tVaried, values3(:,10),'Color',orange)
+
 xlabel('Wall thickness [mm]')
 ylabel('Normalized constraint values')
-legend('Length Constraint','Specific Impulse Constraint','Stress Constraint', 'Temperature Constraint','Mass Constraint','Location','Best')
+legend('Stress Constraint', 'Temperature Constraint','Mass Constraint','Thinwalled Constraint','Location','Best')
 set(gca, 'FontSize',fontsize)
 
 % Derivatives of theta1
@@ -139,13 +145,13 @@ figure
 % title('Constraints as a function of \theta 1')
 hold on
 plot(theta1Varied, values4(:,2),'k')
-plot(theta1Varied, values4(:,3),'r')
-plot(theta1Varied, values4(:,4),'g')
-plot(theta1Varied, values4(:,5),'b')
 plot(theta1Varied, values4(:,6),'m')
+plot(theta1Varied, values4(:,7),'y')
+plot(theta1Varied, values4(:,8),'Color' , purple)
+
 xlabel('Throat divergence half angle \theta 1 [deg]')
 ylabel('Normalized constraint values')
-legend('Length Constraint','Specific Impulse Constraint','Stress Constraint', 'Temperature Constraint','Mass Constraint','Location','Best')
+legend('Length Constraint','Mass Constraint','Min \theta 1 Constraint','Max \theta 1 Constraint', 'Location','Best')
 set(gca, 'FontSize',fontsize)
 
 
@@ -160,11 +166,10 @@ figure
 % title('Constraints as a function of \theta 2')
 hold on
 plot(theta2Varied, values5(:,2),'k')
-plot(theta2Varied, values5(:,3),'r')
-plot(theta2Varied, values5(:,4),'g')
-plot(theta2Varied, values5(:,5),'b')
 plot(theta2Varied, values5(:,6),'m')
+plot(theta2Varied, values5(:,9),'c')
+
 xlabel('Exit divergence half angle \theta 2 [deg]')
 ylabel('Normalized constraint values')
-legend('Length Constraint','Specific Impulse Constraint','Stress Constraint', 'Temperature Constraint','Mass Constraint','Location','Best')
+legend('Length Constraint','Mass Constraint', 'Max \theta 2 Constraint','Location','Best')
 set(gca, 'FontSize',fontsize)
