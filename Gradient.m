@@ -1,6 +1,12 @@
 function [ dfdx,dgdx ] = Gradient( designVec )
-%UNTITLED2 Simplex method(Dantzig)
-%   Detailed explanation goes here
+%Gradient Calculating gradients of objective functions and constraints
+%   
+%   Inputs: 
+%       designVec
+%   Outputs:
+%       gradients of the objective function
+%       gradients of the constraints 
+%
 
 %% Creating gradients of the design point.
 
